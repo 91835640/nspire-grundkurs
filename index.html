@@ -1652,7 +1652,7 @@
       }
       html += '<div class="printhead">Nspire-Grundkurs &middot; TI-Nspire CX II-T CAS &middot; Themenbereich '+state.level+'</div>';
       html += '<div class="theorypane"><div class="secttools">'+
-                '<span class="tools-l"><button id="printBtn">🖨 Drucken</button></span><button id="toggleAll"></button>'+
+                '<span class="tools-l"></span><button id="toggleAll"></button>'+
               '</div>'+sectionize(keyify(THEORY[state.level]), state.level)+'</div>';
     } else {
       if(state.level === "mixed"){
@@ -1714,7 +1714,6 @@
         updateToggle();
       });
       updateToggle();
-      document.getElementById("printBtn").addEventListener("click", doPrint);
     } else {
       list.forEach(function(ex){ bindCard(ex); });
     }
@@ -1853,7 +1852,6 @@
 
   /* ================= print ================= */
   var printOpened = [];
-  function doPrint(){ try { window.print(); } catch(e){} }
   if(typeof window !== "undefined" && typeof window.addEventListener === "function"){
     window.addEventListener("beforeprint", function(){
       printOpened = [];
@@ -1904,7 +1902,7 @@
     var app = document.getElementById("app");
     var back = state.returnTo === "level" ? "‹ Zurück zu " + levelTitle(state.level) : "‹ Menü";
     var html = '<div class="backbar"><button class="cta secondary" id="backBtn">'+back+'</button>'+
-               '<span class="tools-r">'+pdfLink("ref").replace('class="pdflink"','class="reflink pdflink"')+'<button class="reflink" id="printRef">🖨 Drucken</button></span></div>';
+               '<span class="tools-r">'+pdfLink("ref").replace('class="pdflink"','class="reflink pdflink"')+'</span></div>';
     html += '<div class="spickhead"><div class="logo">'+LOGO_SVG+'</div><div><div class="levelheader">Nachschlagewerk</div>'+
             '<div class="appSub">TI-Nspire CX II-T CAS &middot; Nspire-Grundkurs</div></div></div>';
     var n = 0;
@@ -1929,7 +1927,6 @@
       state.screen = state.returnTo === "level" ? "level" : "start";
       render();
     });
-    document.getElementById("printRef").addEventListener("click", doPrint);
     Array.prototype.forEach.call(app.querySelectorAll(".seelink"), function(b){
       b.addEventListener("click", function(){ openHit({kind:"theory", level:parseInt(b.getAttribute("data-lvl"),10), sec:parseInt(b.getAttribute("data-sec"),10)}); });
     });
