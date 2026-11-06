@@ -276,7 +276,7 @@
   a.pdflink{color:var(--accent); font-weight:600; font-size:13px; text-decoration:none;}
   a.pdflink:hover{text-decoration:underline;}
   button.seelink{background:none; border:0; padding:0; font:inherit; font-size:12.5px; font-weight:600; color:var(--accent); cursor:pointer; white-space:nowrap;}
-  @media print{ button.seelink{font-size:11px; color:#1b2030;} }
+  @media print{ button.seelink{font-size:9.5px; color:#1b2030;} }
   button.seelink:hover{text-decoration:underline;}
   a.reflink.pdflink{font-size:13.5px; font-weight:700; padding:9px 14px; border:1px solid var(--border); border-radius:10px; text-decoration:none;}
   .printhead{display:none;}
@@ -298,11 +298,12 @@
   .spickhead{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
   .spickhead .logo svg{width:30px; height:41px; display:block;}
   .spickhead .levelheader{margin:0;}
-  .spick{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;}
+  .spick{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(300px,100%), 1fr)); gap:12px;}
   .spsec{margin-top:22px;}
   .palrow{display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start;}
   .palrow figure.fig{margin:0;}
-  .spbox{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--dot); border-radius:12px; padding:10px 12px; box-shadow:var(--shadow);}
+  .spbox{position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:10px 12px 10px 16px; box-shadow:var(--shadow);}
+  .spbox::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--dot);}
   .spbox h3{font-size:13.5px; margin:0 0 6px; display:flex; align-items:center; gap:8px;}
   .lvl-dot.sm{width:20px; height:20px; font-size:11px; border-radius:6px; background:var(--dot);}
   .spbox table{border-collapse:collapse; width:100%; font-size:12.5px;}
@@ -324,7 +325,7 @@
     details.sect > summary::after{display:none;}
     figure, .calc, .pal, .qcard, .spbox, tr{break-inside:avoid;}
     .qcard{box-shadow:none;}
-    .spick{grid-template-columns:1fr 1fr; gap:8px;}
+    .spick{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px;}
     .refpal{display:none !important;}
     .printhead{display:block; font-size:10px; color:#555; margin-bottom:4px;}
     figure.fig img{max-width:min(100%,250px) !important;}
@@ -338,7 +339,7 @@
     .flash-target{animation:none !important; background:none !important;}
     .sectionlabel{margin:10px 0 6px;}
     .spsec{margin-top:12px;}
-    .spbox{padding:6px 8px;}
+    .spbox{padding:6px 8px 6px 11px; border-color:#c5cad6; box-shadow:none;}
     .spbox table{font-size:9.5px;}
     .spbox td{padding:1px 0;}
     .spbox h3{font-size:11px; margin:0 0 3px;}
